@@ -19,7 +19,7 @@
      <x>9</x>
      <y>280</y>
      <width>451</width>
-     <height>25</height>
+     <height>29</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_9">
@@ -76,7 +76,7 @@
       <x>10</x>
       <y>31</y>
       <width>431</width>
-      <height>56</height>
+      <height>64</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
@@ -87,16 +87,6 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="QSpinBox" name="sbRandomFrom">
-       <property name="minimum">
-        <number>-1000</number>
-       </property>
-       <property name="maximum">
-        <number>1000</number>
-       </property>
-      </widget>
-     </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_3">
        <property name="text">
@@ -104,13 +94,35 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
-      <widget class="QSpinBox" name="sbRandomTo">
-       <property name="minimum">
-        <number>-1000</number>
+     <item row="0" column="1">
+      <widget class="QDoubleSpinBox" name="sbRandomFrom">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhNone</set>
        </property>
        <property name="maximum">
-        <number>1000</number>
+        <double>999.990000000000009</double>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="stepType">
+        <enum>QAbstractSpinBox::AdaptiveDecimalStepType</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QDoubleSpinBox" name="sbRandomTo">
+       <property name="maximum">
+        <double>999.990000000000009</double>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="stepType">
+        <enum>QAbstractSpinBox::AdaptiveDecimalStepType</enum>
        </property>
       </widget>
      </item>
@@ -181,7 +193,7 @@
      <x>10</x>
      <y>10</y>
      <width>451</width>
-     <height>25</height>
+     <height>29</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout_2">

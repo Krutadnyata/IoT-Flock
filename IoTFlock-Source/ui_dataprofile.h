@@ -36,9 +36,9 @@ public:
     QWidget *layoutWidget1;
     QFormLayout *formLayout;
     QLabel *label_2;
-    QSpinBox *sbRandomFrom;
+    QDoubleSpinBox *sbRandomFrom;
     QLabel *label_3;
-    QSpinBox *sbRandomTo;
+    QDoubleSpinBox *sbRandomTo;
     QGroupBox *gbEndText;
     QLineEdit *txtEndText;
     QGroupBox *gbStartText;
@@ -89,7 +89,7 @@ public:
 
         formLayout->setWidget(0, QFormLayout::LabelRole, label_2);
 
-        sbRandomFrom = new QSpinBox(layoutWidget1);
+        sbRandomFrom = new QDoubleSpinBox(layoutWidget1);
         sbRandomFrom->setObjectName(QString::fromUtf8("sbRandomFrom"));
         sbRandomFrom->setMinimum(-1000);
         sbRandomFrom->setMaximum(1000);
@@ -101,7 +101,7 @@ public:
 
         formLayout->setWidget(1, QFormLayout::LabelRole, label_3);
 
-        sbRandomTo = new QSpinBox(layoutWidget1);
+        sbRandomTo = new QDoubleSpinBox(layoutWidget1);
         sbRandomTo->setObjectName(QString::fromUtf8("sbRandomTo"));
         sbRandomTo->setMinimum(-1000);
         sbRandomTo->setMaximum(1000);

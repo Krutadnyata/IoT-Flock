@@ -69,8 +69,10 @@ QMessageBox msgBox;
     void run();
 
     int GenerateRandomNumber(int from ,int to);
+    double GenerateDoubleRandomNumber(double from, double to);
+
     bool isSendTime(QString lastSentTime,QString timeProfileType,int interval);
-    QString GetData(bool isStartText,QString startText,bool isRandom, int from, int to, bool isEndText, QString endText);
+    QString GetData(bool isStartText,QString startText,bool isRandom, double from, double to, bool isEndText, QString endText);
 
 private:
     int workerID = 0;

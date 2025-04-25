@@ -189,11 +189,8 @@ if(templateID>0)
 
 }
 else {
-    return false;
-
-  qDebug()<<"Error while inserting";
-
-
+    qDebug()<<"Error while inserting";
+    return false;  
 }
 mutex.unlock();
 return  true;
@@ -918,8 +915,8 @@ bool ThreadMain::SaveUseCaseXML(int UseCaseID, bool isRun){
                  xmlWriter.writeTextElement("Data_Profile_IsStartText",QString::number(_objDevice.lstPubTopic[i]._objDataProfile.isStartText) );
                  xmlWriter.writeTextElement("Data_Profile_StartText", _objDevice.lstPubTopic[i]._objDataProfile.startText );
                  xmlWriter.writeTextElement("Data_Profile_IsRandom",QString::number( _objDevice.lstPubTopic[i]._objDataProfile.isRandom) );
-                 xmlWriter.writeTextElement("Data_Profile_RandomFrom",QString::number( _objDevice.lstPubTopic[i]._objDataProfile.randomFrom) );
-                 xmlWriter.writeTextElement("Data_Profile_RandomTo",QString::number( _objDevice.lstPubTopic[i]._objDataProfile.randomTo) );
+                 xmlWriter.writeTextElement("Data_Profile_RandomFrom",QString::number( _objDevice.lstPubTopic[i]._objDataProfile.randomFrom, 'f',2 ));
+                 xmlWriter.writeTextElement("Data_Profile_RandomTo",QString::number( _objDevice.lstPubTopic[i]._objDataProfile.randomTo, 'f',2 ) );
                  xmlWriter.writeTextElement("Data_Profile_IsEndText",QString::number(_objDevice.lstPubTopic[i]._objDataProfile.isEndText) );
                  xmlWriter.writeTextElement("Data_Profile_EndText", _objDevice.lstPubTopic[i]._objDataProfile.endText );
                  xmlWriter.writeEndElement(); //end Publish Details
@@ -943,8 +940,8 @@ bool ThreadMain::SaveUseCaseXML(int UseCaseID, bool isRun){
                 xmlWriter.writeTextElement("Data_Profile_IsStartText",QString::number(_objDevice.lstDeviceCoapData[j]._objDataProfile.isStartText));
                 xmlWriter.writeTextElement("Data_Profile_StartText",_objDevice.lstDeviceCoapData[j]._objDataProfile.startText);
                 xmlWriter.writeTextElement("Data_Profile_IsRandom",QString::number(_objDevice.lstDeviceCoapData[j]._objDataProfile.isRandom));
-                xmlWriter.writeTextElement("Data_Profile_RandomFrom",QString::number(_objDevice.lstDeviceCoapData[j]._objDataProfile.randomFrom));
-                xmlWriter.writeTextElement("Data_Profile_RandomTo",QString::number(_objDevice.lstDeviceCoapData[j]._objDataProfile.randomTo));
+                xmlWriter.writeTextElement("Data_Profile_RandomFrom",QString::number(_objDevice.lstDeviceCoapData[j]._objDataProfile.randomFrom, 'f',2 ));
+                xmlWriter.writeTextElement("Data_Profile_RandomTo",QString::number(_objDevice.lstDeviceCoapData[j]._objDataProfile.randomTo, 'f',2 ));
                 xmlWriter.writeTextElement("Data_Profile_IsEndText",QString::number(_objDevice.lstDeviceCoapData[j]._objDataProfile.isEndText));
                 xmlWriter.writeTextElement("Data_Profile_EndText",_objDevice.lstDeviceCoapData[j]._objDataProfile.endText);
                 xmlWriter.writeEndElement(); //end Coap Details
@@ -1045,8 +1042,8 @@ QString ThreadMain::GenerateUseCaseXML(int UseCaseID, QString useCaseName){
                  xmlWriter.writeTextElement("Data_Profile_IsStartText",QString::number(_objDevice.lstPubTopic[i]._objDataProfile.isStartText) );
                  xmlWriter.writeTextElement("Data_Profile_StartText", _objDevice.lstPubTopic[i]._objDataProfile.startText );
                  xmlWriter.writeTextElement("Data_Profile_IsRandom",QString::number( _objDevice.lstPubTopic[i]._objDataProfile.isRandom) );
-                 xmlWriter.writeTextElement("Data_Profile_RandomFrom",QString::number( _objDevice.lstPubTopic[i]._objDataProfile.randomFrom) );
-                 xmlWriter.writeTextElement("Data_Profile_RandomTo",QString::number( _objDevice.lstPubTopic[i]._objDataProfile.randomTo) );
+                 xmlWriter.writeTextElement("Data_Profile_RandomFrom",QString::number( _objDevice.lstPubTopic[i]._objDataProfile.randomFrom, 'f',2 ) );
+                 xmlWriter.writeTextElement("Data_Profile_RandomTo",QString::number( _objDevice.lstPubTopic[i]._objDataProfile.randomTo, 'f',2 ) );
                  xmlWriter.writeTextElement("Data_Profile_IsEndText",QString::number(_objDevice.lstPubTopic[i]._objDataProfile.isEndText) );
                  xmlWriter.writeTextElement("Data_Profile_EndText", _objDevice.lstPubTopic[i]._objDataProfile.endText );
                  xmlWriter.writeEndElement(); //end Publish Details
@@ -1070,8 +1067,8 @@ QString ThreadMain::GenerateUseCaseXML(int UseCaseID, QString useCaseName){
                 xmlWriter.writeTextElement("Data_Profile_IsStartText",QString::number(_objDevice.lstDeviceCoapData[j]._objDataProfile.isStartText));
                 xmlWriter.writeTextElement("Data_Profile_StartText",_objDevice.lstDeviceCoapData[j]._objDataProfile.startText);
                 xmlWriter.writeTextElement("Data_Profile_IsRandom",QString::number(_objDevice.lstDeviceCoapData[j]._objDataProfile.isRandom));
-                xmlWriter.writeTextElement("Data_Profile_RandomFrom",QString::number(_objDevice.lstDeviceCoapData[j]._objDataProfile.randomFrom));
-                xmlWriter.writeTextElement("Data_Profile_RandomTo",QString::number(_objDevice.lstDeviceCoapData[j]._objDataProfile.randomTo));
+                xmlWriter.writeTextElement("Data_Profile_RandomFrom",QString::number(_objDevice.lstDeviceCoapData[j]._objDataProfile.randomFrom, 'f',2 ));
+                xmlWriter.writeTextElement("Data_Profile_RandomTo",QString::number(_objDevice.lstDeviceCoapData[j]._objDataProfile.randomTo, 'f',2 ));
                 xmlWriter.writeTextElement("Data_Profile_IsEndText",QString::number(_objDevice.lstDeviceCoapData[j]._objDataProfile.isEndText));
                 xmlWriter.writeTextElement("Data_Profile_EndText",_objDevice.lstDeviceCoapData[j]._objDataProfile.endText);
                 xmlWriter.writeEndElement(); //end Coap Details
@@ -1268,11 +1265,11 @@ bool ThreadMain::Traverse(const QDomNode &node,QList<objDevice> &lstDevcies,QStr
                     }
                     else if(domElement.tagName() == "Data_Profile_RandomFrom" && LastTag == "Publish_Detail")
                     {
-                        lstDevcies[lstDevcies.count()-1].lstPubTopic[lstDevcies[lstDevcies.count()-1].lstPubTopic.count()-1]._objDataProfile.randomFrom = domElement.text().toInt();
+                        lstDevcies[lstDevcies.count()-1].lstPubTopic[lstDevcies[lstDevcies.count()-1].lstPubTopic.count()-1]._objDataProfile.randomFrom = domElement.text().toDouble();
                     }
                     else if(domElement.tagName() == "Data_Profile_RandomTo" && LastTag == "Publish_Detail")
                     {
-                        lstDevcies[lstDevcies.count()-1].lstPubTopic[lstDevcies[lstDevcies.count()-1].lstPubTopic.count()-1]._objDataProfile.randomTo = domElement.text().toInt();
+                        lstDevcies[lstDevcies.count()-1].lstPubTopic[lstDevcies[lstDevcies.count()-1].lstPubTopic.count()-1]._objDataProfile.randomTo = domElement.text().toDouble();
                     }
                     else if(domElement.tagName() == "Data_Profile_IsEndText" && LastTag == "Publish_Detail")
                     {
@@ -1320,11 +1317,11 @@ bool ThreadMain::Traverse(const QDomNode &node,QList<objDevice> &lstDevcies,QStr
                     }
                     else if(domElement.tagName() == "Data_Profile_RandomFrom" && LastTag == "COAP")
                     {
-                        lstDevcies[lstDevcies.count()-1].lstDeviceCoapData[lstDevcies[lstDevcies.count()-1].lstDeviceCoapData.count()-1]._objDataProfile.randomFrom = domElement.text().toInt();
+                        lstDevcies[lstDevcies.count()-1].lstDeviceCoapData[lstDevcies[lstDevcies.count()-1].lstDeviceCoapData.count()-1]._objDataProfile.randomFrom = domElement.text().toDouble();
                     }
                     else if(domElement.tagName() == "Data_Profile_RandomTo" && LastTag == "COAP")
                     {
-                        lstDevcies[lstDevcies.count()-1].lstDeviceCoapData[lstDevcies[lstDevcies.count()-1].lstDeviceCoapData.count()-1]._objDataProfile.randomTo = domElement.text().toInt();
+                        lstDevcies[lstDevcies.count()-1].lstDeviceCoapData[lstDevcies[lstDevcies.count()-1].lstDeviceCoapData.count()-1]._objDataProfile.randomTo = domElement.text().toDouble();
                     }
                     else if(domElement.tagName() == "Data_Profile_IsEndText" && LastTag == "COAP")
                     {

@@ -213,14 +213,14 @@ bool Device::isSendTime(QString lastSentTime,QString timeProfileType,int interva
    return isSendDataNow;
 }
 
-QString Device::GetData(bool isStartText,QString startText,bool isRandom, int from, int to, bool isEndText, QString endText)
+QString Device::GetData(bool isStartText,QString startText,bool isRandom, double from, double to, bool isEndText, QString endText)
 {
 QString data = "";
 if(isStartText)
     data = startText;
 if(isRandom)
 {
-    data = data + QString::number(GenerateRandomNumber(from,to));
+    data = data + QString::number(GenerateDoubleRandomNumber(from,to));
 }
 if(isEndText)
     data = data  + endText;
@@ -230,9 +230,22 @@ int Device::GenerateRandomNumber(int from ,int to)
 {
     QRandomGenerator generator;
     generator.seed(rand());
-    qint32 rNumber = generator.bounded(from,to);
+    qint32 rNumber = generator.bounded(from, to);  // ❌
     return rNumber;
 }
+double Device::GenerateDoubleRandomNumber(double from, double to)
+{
+    // Ensure range is valid
+    if (from >= to)
+        return from;
+
+    // Use global high-quality generator for float [0.0, 1.0]
+    double randomFraction = QRandomGenerator::global()->generateDouble();
+
+    // Scale and shift into the target range
+    return from + randomFraction * (to - from);
+}
+
 void Device::TimerTick( )
 {
 

@@ -33,8 +33,8 @@ public:
     int isStartText;
     QString startText;
     int  isRandom;
-    int    randomFrom;
-    int randomTo;
+    double   randomFrom;
+    double randomTo;
     int   isEndText;
     QString  endText;
 

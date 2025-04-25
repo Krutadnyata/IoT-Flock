@@ -624,7 +624,8 @@ void frmNewDeviceTemplate::Save()
        if(FormType == "NEWDEVICE")
        {
             QMessageBox::information(this,tr("Query Info"),tr("Saved Successfully"));
-            ClearForm();
+            this->accept();
+//            ClearForm();
        }
     }
    else {

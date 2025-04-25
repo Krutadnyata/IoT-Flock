@@ -896,7 +896,7 @@ void frmnewDevice::on_cmbSelectTemplate_currentIndexChanged(int index)
 
 
     FormType="EDIT";
-   SetFormLayout();
+    SetFormLayout();
     FillFormData();
 
 

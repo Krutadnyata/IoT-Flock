@@ -67,8 +67,8 @@ QList<objDataProfile> dlDataProfile::GetDataProfileList()
                    _objDataProfile.isStartText = query.value("isStartText").toInt();
                    _objDataProfile.startText = query.value("startText").toString();
                    _objDataProfile.isRandom = query.value("isRandom").toInt();
-                   _objDataProfile.randomFrom = query.value("randomFrom").toInt();
-                   _objDataProfile.randomTo = query.value("randomTo").toInt();
+                   _objDataProfile.randomFrom = query.value("randomFrom").toDouble();
+                   _objDataProfile.randomTo = query.value("randomTo").toDouble();
                    _objDataProfile.isEndText = query.value("isEndText").toInt();
                    _objDataProfile.endText = query.value("endText").toString();
 
@@ -94,8 +94,8 @@ objDataProfile dlDataProfile::GetDataProfile(int id){
         _objDataProfile.isStartText = query.value("isStartText").toInt();
         _objDataProfile.startText = query.value("startText").toString();
         _objDataProfile.isRandom = query.value("isRandom").toInt();
-        _objDataProfile.randomFrom = query.value("randomFrom").toInt();
-        _objDataProfile.randomTo = query.value("randomTo").toInt();
+        _objDataProfile.randomFrom = query.value("randomFrom").toDouble();
+        _objDataProfile.randomTo = query.value("randomTo").toDouble();
         _objDataProfile.isEndText = query.value("isEndText").toInt();
         _objDataProfile.endText = query.value("endText").toString();
     }

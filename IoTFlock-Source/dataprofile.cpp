@@ -128,8 +128,8 @@ void DataProfile::saveDataProfile(){
     }
     else{
         _objDataProfile.isRandom = 0;
-        _objDataProfile.randomFrom = 0;
-        _objDataProfile.randomTo = 0;
+        _objDataProfile.randomFrom = 0.0;
+        _objDataProfile.randomTo = 0.0;
     }
 
 //couldn't
@@ -227,7 +227,7 @@ void DataProfile::editDataProfile(int id){
     }
 
     if(ui->gbRandomValue->isChecked()){
-        if(ui->sbRandomTo->value() == 0){
+        if(ui->sbRandomTo->value() == 0.0){
             QMessageBox::critical(this, tr("Data Profile"), tr("In Random Value 'To' can't be zero."));
             return;
         }
@@ -243,8 +243,8 @@ void DataProfile::editDataProfile(int id){
     }
     else{
         _objDataProfile.isRandom = 0;
-        _objDataProfile.randomFrom = 0;
-        _objDataProfile.randomTo = 0;
+        _objDataProfile.randomFrom = 0.0;
+        _objDataProfile.randomTo = 0.0;
     }
 
 
